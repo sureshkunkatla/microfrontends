@@ -1,5 +1,5 @@
 import React from 'react'
-import { StylesProvider } from "@material-ui/core";
+import { StylesProvider, createGenerateClassName } from "@material-ui/core";
 import {
     BrowserRouter,
     Switch,
@@ -9,10 +9,14 @@ import {
 import Landing from "./components/Landing";
 import Pricing from "./components/Pricing";
 
+const generateClassName = createGenerateClassName({
+  productionPrefix: "co",
+});
+
 
 const App = () => {
   return (
-    <StylesProvider>
+    <StylesProvider generateClassName={generateClassName}>
       <BrowserRouter>
         <Switch>
           <Route path="/pricing" exact component={Pricing} />
